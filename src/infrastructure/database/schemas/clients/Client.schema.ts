@@ -1,15 +1,7 @@
-import { Schema, model, Document } from 'mongoose'
+import mongoose, { Schema } from "mongoose";
+import { IClient } from '../../../../domain/interfaces/clients/i.client';
 
-export interface IClient extends Document {
-    businessName: string;
-    ruc: string;
-    address: string;
-    active: boolean;
-    status: boolean;
-    created_at: Date;
-}
-
-const clientSchema = new Schema({
+export const schema = new Schema({
     businessName: {
         type: String,
         min: 3,
@@ -34,7 +26,6 @@ const clientSchema = new Schema({
         type: Date,
         default: Date.now
     }
-
 })
 
-export default model<IClient>('Client', clientSchema);
+export const ClientSchema = mongoose.model<IClient>('Client', schema);

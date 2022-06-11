@@ -1,12 +1,10 @@
-import dotenv from 'dotenv';
-dotenv.config();
+import { Server } from './presentation/configuration/server';
+import { Mongo } from './infrastructure/database/connection';
 
-import app from './app';
-import './database';
+const server = new Server();
 
-function init() {
-    app.listen(app.get('port'));
-    console.log('Server on port', app.get('port'));
-};
+server.start();
 
-init();
+const mongo = new Mongo();
+
+mongo.connect();

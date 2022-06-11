@@ -6,6 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
       target: base
+    image: 'oscarquirozoch/clients-microservice'
     volumes: 
       - ./src:/home/node/app/src
       - ./nodemon.json:/home/node/app/nodemon.json
